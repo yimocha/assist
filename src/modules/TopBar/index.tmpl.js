@@ -62,7 +62,7 @@ const topBarHtml = (namespace) => {
         </div>
         <div id='${namespace}-pointeread' class='topbar-html-content-item topbar-html-mright'>
           <span>指读</span>
-          <img src='${pointeread}' source-src='${pointeread}'  hover-src='${pointereadHover}'></img>
+          <img src='${pointeread}' source-src='${pointeread}' selected-src='${pointeread}'  hover-src='${pointereadHover}'></img>
         </div>
         <div id='${namespace}-close' class='topbar-html-content-item'>
           <span>退出服务</span>

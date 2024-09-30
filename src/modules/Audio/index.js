@@ -27,6 +27,7 @@ this.audioTabImg.src = this.audioTabImg.getAttribute('selected-src')
 
     if(this.isOveread) {
         this.pointeReadTabIcon.src  =  this.pointeReadTabIcon.getAttribute('selected-src')
+        // this.pointeReadTabIcon.src  =  this.pointeReadTabIcon.getAttribute('source-src')
     } else {
         this.pointeReadTabIcon.src = this.pointeReadTabIcon.getAttribute('source-src')
     }
