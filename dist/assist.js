@@ -3850,7 +3850,7 @@
   var styles = ".bigtext-html {\n  z-index: 99999999999;\n  height: 150px;\n  text-align: center;\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  border-top: 1px solid #797F8D;\n  background-color: #FFFFFF;\n}\n.bigtext-html-content {\n  height: 100%;\n  background-color: #FFFFFF;\n  font-size: 53px;\n  color: #333 !important;\n  text-align: center;\n  font-weight: bold;\n  width: 93%;\n  margin: 0 auto;\n}\n.bigtext-html-btn {\n  width: 20px;\n  height: 20px;\n  background-color: red;\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  border-radius: 10px;\n  color: #FFFFFF;\n  cursor: pointer;\n}\n.bigtext-html-bone {\n  width: 100%;\n  height: 151px;\n}";
 
   var BigTextHtml = function BigTextHtml(namespace) {
-    return "<div id='".concat(namespace, "-bigtext-html' class='bigtext-html'>\n           <div id='").concat(namespace, "-bigtext-content' class='bigtext-html-content'></div>\n           <div class='bigtext-html-btn' id='").concat(namespace, "-bigtext-close'>\n              <i class='bigtext-html-close' role='button' title='\u5173\u95ED\u5927\u5B57\u5E55\u6A21\u5F0F'>X</i>\n           </div>\n        </div>");
+    return "<div id='".concat(namespace, "-bigtext-html' class='bigtext-html'>\n           <div id='").concat(namespace, "-bigtext-content' class='bigtext-html-content'></div>\n           <div class='bigtext-html-btn' id='").concat(namespace, "-bigtext-close'>\n              <span class='bigtext-html-close' role='button' title='\u5173\u95ED\u5927\u5B57\u5E55\u6A21\u5F0F'>X</span>\n           </div>\n        </div>");
   };
   var BigTextBone = function BigTextBone() {
     return "<div class='bigtext-html-bone'></div>";
@@ -3910,6 +3910,19 @@
       var __parentNodeId = target.parentNode.id;
       var __isAssist = __parentNodeId.indexOf(namespace) > -1;
       var activeBtn = document.getElementById("".concat(namespace, "-bigtext-content"));
+
+      // if ("undefined" != typeof PinyinHelper) {
+      //     let text = parseTagText(target).replace(symbolsReg, '')
+      //     console.log('text:', text)
+      //     let t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK)
+      //     console.log('t:', t)
+      //     let r = "";
+      //     for (var n = 0; n < t.length; n++) {
+      //         r += '<div class="pinyin ariaskiptheme">' + '<ariab class="ariaskiptheme"><ariai class="ariaskiptheme">' + t[n].v + '</ariai><ariai class="ariaskiptheme">' + t[n].key + "</ariai></ariab>" + "</div>"
+      //     }
+      //     activeBtn.innerHTML = r
+      // }
+
       activeBtn.innerText = parseTagText(target).replace(symbolsReg, '');
       if (__isAssist || activeBtn.innerText == '文本') {
         activeBtn.innerText = '';
