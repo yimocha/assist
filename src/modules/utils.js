@@ -5,13 +5,14 @@ const cookie = {
     set:(key,value, namespace) => {
      let memory = {
         show: false,   // 是否展示无障碍
-        audio: false,  // 是否开启声音
+        audio: true,  // 是否开启声音
         speed: 'middle', // 语速
         zomm: 0.1,     // 缩放倍数
         cursor: false, // 是否替换鼠标样式
         pointer: false,// 是否开启十字线
         bigtext: false,// 是否开启大字幕
-        overead: false // 是否开启指读
+        overead: true, // 是否开启指读
+        tiaose: '' // 调色
       }
 
      if(Cookies.get(namespace)) {

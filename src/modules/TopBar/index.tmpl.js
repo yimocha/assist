@@ -8,6 +8,7 @@ import pointer from '../../assets/pointer.png';
 import bigtext from '../../assets/bigtext.png';
 import pointeread from '../../assets/pointeread.png';
 import close from '../../assets/close.png';
+import tiaose from '../../assets/tiaose.png'
 
 import resetHover from '../../assets/reset-hover.png';
 import audioHover from '../../assets/audio-hover.png';
@@ -34,7 +35,7 @@ const topBarHtml = (namespace) => {
         </div>
         <div id='${namespace}-audio' class='topbar-html-content-item topbar-html-margin0'>
           <span>声音开关</span>
-          <img src='${audio}' name='audio' source-src='${audio}'  hover-src='${audioHover}'    selected-src='${closeAudio}'   selected-hover-src='${closeAudioHover}'></img>
+          <img src='${audioHover}' name='audio' source-src='${audioHover}'  hover-src='${audioHover}'  selected-src='${closeAudio}'   selected-hover-src='${closeAudioHover}'></img>
         </div>
         <div id='${namespace}-audio-speed' class='topbar-html-content-item topbar-html-mright'>
           <span>语速</span>
@@ -50,19 +51,23 @@ const topBarHtml = (namespace) => {
         </div>
         <div id='${namespace}-cursor-auto' class='topbar-html-content-item topbar-html-margin0'>
           <span>鼠标样式</span>
-          <img src='${cursor}' source-src='${cursor}'  hover-src='${cursorHover}'></img>
+          <img src='${cursor}' source-src='${cursor}' selected-src='${cursorHover}'  hover-src='${cursorHover}'></img>
         </div>
         <div id='${namespace}-pointer-follow' class='topbar-html-content-item'>
           <span>十字线</span>
-          <img src='${pointer}' source-src='${pointer}'  hover-src='${pointerHover}'></img>
+          <img src='${pointer}' source-src='${pointer}' selected-src='${pointerHover}'  hover-src='${pointerHover}'></img>
         </div>
         <div id='${namespace}-bigtext' class='topbar-html-content-item topbar-html-mright'>
           <span>大字幕</span>
-          <img src='${bigtext}' source-src='${bigtext}'  hover-src='${bigtextHover}'></img>
+          <img src='${bigtext}' source-src='${bigtext}' selected-src='${bigtextHover}'  hover-src='${bigtextHover}'></img>
         </div>
         <div id='${namespace}-pointeread' class='topbar-html-content-item topbar-html-mright'>
           <span>指读</span>
-          <img src='${pointeread}' source-src='${pointeread}' selected-src='${pointeread}'  hover-src='${pointereadHover}'></img>
+          <img src='${pointeread}' source-src='${pointeread}' selected-src='${pointereadHover}'  hover-src='${pointereadHover}'></img>
+        </div>
+        <div id='${namespace}-tiaose' class='topbar-html-content-item'>
+          <span>调色</span>
+          <img src='${tiaose}' source-src='${tiaose}' selected-src='${tiaose}'  hover-src='${tiaose}'></img>
         </div>
         <div id='${namespace}-close' class='topbar-html-content-item'>
           <span>退出服务</span>

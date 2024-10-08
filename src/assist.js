@@ -6,8 +6,9 @@ import ZoomPage from './modules/ZoomPage';
 import PointerFllow from './modules/PointerFllow';
 import CursorAuto from './modules/CursorAuto';
 import BigText from './modules/BigText';
+import TiaoSe from './modules/TiaoSe';
 
-const InitModules = [ TopBar, Audio, ZoomPage, PointerFllow, CursorAuto, BigText ]
+const InitModules = [ TopBar, Audio, ZoomPage, PointerFllow, CursorAuto, BigText, TiaoSe ]
 class Assist extends Base {
   
     constructor(opts = {}) {
@@ -38,6 +39,7 @@ class Assist extends Base {
       CursorAuto.reset(this)
       PointerFllow.reset(this)
       BigText.reset(this)
+      TiaoSe.reset()
     }
 
   }

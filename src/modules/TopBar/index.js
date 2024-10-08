@@ -13,6 +13,7 @@ const TopBar = {
         const BtnClose = document.getElementById(`${namespace}-close`)
         const BtnReset = document.getElementById(`${namespace}-reset`)
         const HoverItem = document.getElementById(`${namespace}-topbar-html-content`)
+        const BtnBigText = document.getElementById(`${namespace}-bigtext`)
 
         BtnClose.onclick = () => {
             core.close()
@@ -22,14 +23,18 @@ const TopBar = {
             core.resetAction()
         }
 
+        BtnBigText.onclick = () => {
+            
+        }
+
         if(isFirefox()) {
             document.getElementById(`${namespace}-zoom-out`).style.display = 'none'
             document.getElementById(`${namespace}-zoom-min`).style.display = 'none'
         }
 
         [].forEach.call( HoverItem.children, (el)=> {
-           addEvent(el,'mouseover',this.mouseOver)
-           addEvent(el,'mouseout',this.mouseOut)
+        //    addEvent(el,'mouseover',this.mouseOver)
+        //    addEvent(el,'mouseout',this.mouseOut)
         });
 
 
