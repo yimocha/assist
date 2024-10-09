@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网站无障碍工具条-Demo</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        html,body{
+
+        html,
+        body {
             height: 100%;
         }
-        h1{
+
+        h1 {
             text-align: center;
             background-color: cornflowerblue;
             color: aliceblue;
         }
-        .open{
+
+        .open {
             border: 2px solid black;
             padding: 10px;
         }
-        .open>p{
+
+        .open>p {
             background-color: black;
             width: 240px;
             font-weight: bold;
             color: darkorange;
         }
-        .open>div#assist-open{
+
+        .open>div#assist-open {
             margin-top: 20px;
             width: 50px;
             height: 25px;
@@ -37,37 +44,61 @@
             border: 2px solid red;
             border-radius: 5px;
         }
-        .demo{
+
+        .demo {
             margin-top: 10px;
             border: 4px dotted;
         }
-        .demo>h3{
+
+        .demo>h3 {
             margin-left: 10px;
         }
     </style>
 </head>
+
 <body>
-    
+
     <h1>网站无障碍工具条演示</h1>
     <div class="open">
-        <p>点击下方按钮开启无障碍服务：</p> 
+        <p>点击下方按钮开启无障碍服务：</p>
         <div id='assist-open'>无障碍</div>
     </div>
-    
+
 
     <div class="demo">
         <h3>无障碍文本标题</h3>
-        
-    <a href="https://github.com/muzihuaner/assist">跳转到 网站无障碍工具条</a><br>
-    <img alt="图片小鲁班" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.chinaxiaokang.com%2Fuploads%2Fimage%2F20170111%2F1484115699794500.jpg&refer=http%3A%2F%2Fwww.chinaxiaokang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627191862&t=07409d7ec21933f941ec6ddbfe485fa2" />
+
+        <a href="https://github.com/muzihuaner/assist">跳转到 网站无障碍工具条</a><br>
+        <img alt="图片小鲁班"
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.chinaxiaokang.com%2Fuploads%2Fimage%2F20170111%2F1484115699794500.jpg&refer=http%3A%2F%2Fwww.chinaxiaokang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627191862&t=07409d7ec21933f941ec6ddbfe485fa2" />
     </div>
     <div class="demo">
         <h3 title='我想要自行标注'>无障碍role标注</h3>
-    <div role="a" href="https://github.com/duheng">跳转到 墨子工程</div>
-    <img title="图片小鲁班" src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.chinaxiaokang.com%2Fuploads%2Fimage%2F20170111%2F1484115699794500.jpg&refer=http%3A%2F%2Fwww.chinaxiaokang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627191862&t=07409d7ec21933f941ec6ddbfe485fa2" />
+        <div role="a" href="https://github.com/duheng">跳转到 墨子工程</div>
+        <img title="图片小鲁班"
+            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwww.chinaxiaokang.com%2Fuploads%2Fimage%2F20170111%2F1484115699794500.jpg&refer=http%3A%2F%2Fwww.chinaxiaokang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1627191862&t=07409d7ec21933f941ec6ddbfe485fa2" />
+    </div>
+
+    <div class="demo">
+        <p>
+            无障碍
+            如果你想成为一名 Web 开发者，学习一些 HTML、CSS、JavaScript 是有用的。除了机械地使用之外，重要的是学习如何负责任地使用这些技术，让所有用户能在 Web
+            使用你的作品。为了帮你实现这个目标，本模块涉及常见的最佳实践（在 HTML、CSS 和 JavaScript 主题中有所体现），以及大量和严格执行无障碍有关的技巧。接下来会详细介绍无障碍。
+
+            概述
+            当有人将一个网站描述为“无障碍”时，意味着不论用户访问 Web 的方式如何，任何一个用户（甚至是有身体或精神障碍的用户）都能使用网站全部的特性和内容。
+
+            使用键盘、鼠标和触摸屏的用户，以及使用任意其他方式（包括屏幕阅读器和诸如 Alexa 和 Google Home 等的语音助手）访问 Web 的用户都应该能访问网站。
+            无论人们的听觉、视觉、身体或认知能力如何，都应该能理解和使用应用程序。
+            网站也不应该造成伤害：像动画（motion）这样的 Web 特性会导致偏头痛或癫痫发作。
+            默认情况下，HTML 在使用得当的情况下是无障碍的。Web 无障碍关乎 Web 内容无论由谁以何种方式访问都能保证是无障碍的。
+
+            要检查 Web 页面上的无障碍问题时，火狐无障碍检查器是一个非常实用的工具。下面的视频对它进行了很好的介绍：
+        </p>
     </div>
     <p>Tips: 可以使用浏览器F12查看本页代码</p>
-<script type="text/javascript" src="../dist/assist-entry.js"></script>
-<script type="text/javascript" src="../dist/pinyin.min.js"></script>
+    <script type="text/javascript" src="../dist/assist-entry.js"></script>
+    <script type="text/javascript" src="../dist/pinyin.min.js"></script>
 </body>
+
 </html>

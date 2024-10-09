@@ -2265,7 +2265,11 @@
         // 是否开启大字幕
         overead: true,
         // 是否开启指读
-        tiaose: '' // 调色
+        tiaose: '',
+        // 调色
+        pinyin: true,
+        // 拼音
+        jianti: true // 简体字体或者繁体
       };
       if (js_cookie.get(namespace)) {
         memory = JSON.parse(js_cookie.get(namespace));
@@ -3367,7 +3371,7 @@
       }
       if (this.speed == 'fast') {
         this.speedTabImg.src = this.speedTabImg.getAttribute('selected-src');
-      } else {
+      } else if (this.speed == 'middle') {
         this.speedTabImg.src = this.speedTabImg.getAttribute('source-src');
       }
     },
@@ -3375,7 +3379,7 @@
       this.audio = document.getElementById("".concat(namespace, "-audio-media")) || '';
       this.audioTab = document.getElementById("".concat(namespace, "-audio")) || '';
       this.audioTabImg = this.audioTab.getElementsByTagName('img')[0];
-      this.speed = cookie.get('speed', namespace);
+      this.speed = cookie.get('speed', namespace) || 'middle';
       this.speedTab = document.getElementById("".concat(namespace, "-audio-speed")) || '';
       this.speedTabImg = this.speedTab.getElementsByTagName('img')[0];
       this.pointeReadTab = document.getElementById("".concat(namespace, "-pointeread")) || '';
@@ -3393,6 +3397,7 @@
         }
       };
       this.speedTab.onclick = function () {
+        console.log(_this.speed);
         if (_this.speed == 'middle') {
           _this.speed = 'fast';
           _this.speedTabImg.src = _this.speedTabImg.getAttribute('selected-src');
@@ -3845,10 +3850,10 @@
     }
   };
 
-  var styles = ".bigtext-html {\n  z-index: 99999999999;\n  height: 150px;\n  text-align: center;\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  border-top: 1px solid #797F8D;\n  background-color: #FFFFFF;\n}\n.bigtext-html-content {\n  height: 100%;\n  background-color: #FFFFFF;\n  font-size: 53px;\n  color: #333 !important;\n  text-align: center;\n  font-weight: bold;\n  width: 93%;\n  margin: 0 auto;\n}\n.bigtext-html-btn {\n  width: 20px;\n  height: 20px;\n  background-color: red;\n  position: absolute;\n  right: 20px;\n  top: 20px;\n  border-radius: 10px;\n  color: #FFFFFF;\n  cursor: pointer;\n}\n.bigtext-html-bone {\n  width: 100%;\n  height: 151px;\n}";
+  var styles = ".bigtext-html {\n  z-index: 99999999999;\n  height: 150px;\n  text-align: center;\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  border-top: 1px solid #797F8D;\n  background-color: #d9d9d9;\n  display: flex;\n}\n.bigtext-html-content {\n  height: 100%;\n  background-color: #d9d9d9;\n  font-size: 53px;\n  color: #333 !important;\n  text-align: center;\n  font-weight: bold;\n  width: 90%;\n  margin: 0 auto;\n  overflow: auto;\n}\n.bigtext-html-btn {\n  width: 20px;\n  height: 20px;\n  background-color: red;\n  position: absolute;\n  right: 20px;\n  top: 10px;\n  border-radius: 10px;\n  color: #FFFFFF;\n  cursor: pointer;\n}\n.bigtext-html-bone {\n  width: 100%;\n  height: 151px;\n}\n.bigtext-html-tool {\n  width: 120px;\n  height: 150px;\n  border-left: #333 1px solid;\n}\n.bigtext-html-tool-btn {\n  width: 75px;\n  height: 40px;\n  line-height: 40px;\n  border: #333 1px solid;\n  border-radius: 5px;\n  display: inline-block;\n  cursor: pointer;\n  font-size: 22px !important;\n  letter-spacing: 5px !important;\n  margin-bottom: 10px;\n}\n.bigtext-html-tool-btn:hover {\n  background-color: #f0f0f0;\n}\n\n.ariaPYTitle {\n  margin-top: 45px;\n}";
 
   var BigTextHtml = function BigTextHtml(namespace) {
-    return "<div id='".concat(namespace, "-bigtext-html' class='bigtext-html'>\n           <div id='").concat(namespace, "-bigtext-content' class='bigtext-html-content'></div>\n           <div class='bigtext-html-btn' id='").concat(namespace, "-bigtext-close'>\n              <span class='bigtext-html-close' role='button' title='\u5173\u95ED\u5927\u5B57\u5E55\u6A21\u5F0F'>X</span>\n           </div>\n        </div>");
+    return "<div id='".concat(namespace, "-bigtext-html' class='bigtext-html'>\n           <div id='").concat(namespace, "-bigtext-content' class='bigtext-html-content'></div>\n           <ariali class=\"bigtext-html-tool\">\n               <div class='bigtext-html-btn' id='").concat(namespace, "-bigtext-close'>\n                  <i class='bigtext-html-close' role='button' title='\u5F53\u524D\u5927\u5B57\u5E55\u5DF2\u5F00\u542F\uFF0C\u5173\u95ED\u5927\u5B57\u5E55\u8BF7\u6309Ctrl+Alt+B'>X</i>\n               </div>\n               <arialabel id=\"").concat(namespace, "-accscreen-py\" class=\"ariaPYTitle bigtext-html-tool-btn\" title=\"\u62FC\u97F3\u5DF2\u542F\u7528\">\u62FC\u97F3</arialabel>\n               <arialabel id=\"").concat(namespace, "-accscreen-jt\" class=\"ariaFontTitle bigtext-html-tool-btn\" title=\"\u7B80\u4F53\u5DF2\u542F\u7528\">\u7E41\u4F53</arialabel>\n           </ariali>\n        </div>");
   };
   var BigTextBone = function BigTextBone() {
     return "<div class='bigtext-html-bone'></div>";
@@ -3859,6 +3864,8 @@
       var namespace = core.config.namespace;
       this.body = document.body;
       this.namespace = namespace;
+      this.pinyin = cookie.get('pinyin', namespace);
+      this.jianti = cookie.get('jianti', namespace);
       core.creatStyle('bigtext-style', styles);
       core.creatHtml('bigtext-html', BigTextHtml);
       core.creatHtml('bigtext-bone', BigTextBone);
@@ -3908,20 +3915,21 @@
       var __parentNodeId = target.parentNode.id;
       var __isAssist = __parentNodeId.indexOf(namespace) > -1;
       var activeBtn = document.getElementById("".concat(namespace, "-bigtext-content"));
-
-      // if ("undefined" != typeof PinyinHelper) {
-      //     let text = parseTagText(target).replace(symbolsReg, '')
-      //     console.log('text:', text)
-      //     let t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK)
-      //     console.log('t:', t)
-      //     let r = "";
-      //     for (var n = 0; n < t.length; n++) {
-      //         r += '<div class="pinyin ariaskiptheme">' + '<ariab class="ariaskiptheme"><ariai class="ariaskiptheme">' + t[n].v + '</ariai><ariai class="ariaskiptheme">' + t[n].key + "</ariai></ariab>" + "</div>"
-      //     }
-      //     activeBtn.innerHTML = r
-      // }
-
-      activeBtn.innerText = parseTagText(target).replace(symbolsReg, '');
+      var text = parseTagText(target).replace(symbolsReg, '');
+      if (this.pinyin) {
+        if ("undefined" != typeof PinyinHelper) {
+          console.log('text:', text);
+          var t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK);
+          console.log('t:', t);
+          var r = "";
+          for (var n = 0; n < t.length; n++) {
+            r += '<div class="pinyin ariaskiptheme">' + '<ariab class="ariaskiptheme"><ariai class="ariaskiptheme">' + t[n].v + '</ariai><ariai class="ariaskiptheme">' + t[n].key + "</ariai></ariab>" + "</div>";
+          }
+          activeBtn.innerHTML = r;
+        }
+      } else {
+        activeBtn.innerText = text;
+      }
       if (__isAssist || activeBtn.innerText == '文本') {
         activeBtn.innerText = '';
         return;

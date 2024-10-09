@@ -10,6 +10,8 @@ const BigText = {
         const { namespace } = core.config
         this.body = document.body
         this.namespace = namespace
+        this.pinyin = cookie.get('pinyin', namespace)
+        this.jianti = cookie.get('jianti', namespace)
         core.creatStyle('bigtext-style', styles)
         core.creatHtml('bigtext-html', BigTextHtml)
         core.creatHtml('bigtext-bone', BigTextBone)
@@ -59,19 +61,23 @@ const BigText = {
         var __isAssist = __parentNodeId.indexOf(namespace) > -1
         const activeBtn = document.getElementById(`${namespace}-bigtext-content`)
 
-        // if ("undefined" != typeof PinyinHelper) {
-        //     let text = parseTagText(target).replace(symbolsReg, '')
-        //     console.log('text:', text)
-        //     let t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK)
-        //     console.log('t:', t)
-        //     let r = "";
-        //     for (var n = 0; n < t.length; n++) {
-        //         r += '<div class="pinyin ariaskiptheme">' + '<ariab class="ariaskiptheme"><ariai class="ariaskiptheme">' + t[n].v + '</ariai><ariai class="ariaskiptheme">' + t[n].key + "</ariai></ariab>" + "</div>"
-        //     }
-        //     activeBtn.innerHTML = r
-        // }
+        let text = parseTagText(target).replace(symbolsReg, '')
 
-        activeBtn.innerText = parseTagText(target).replace(symbolsReg, '')
+        if (this.pinyin) {
+            if ("undefined" != typeof PinyinHelper) {
+                console.log('text:', text)
+                let t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK)
+                console.log('t:', t)
+                let r = "";
+                for (var n = 0; n < t.length; n++) {
+                    r += '<div class="pinyin ariaskiptheme">' + '<ariab class="ariaskiptheme"><ariai class="ariaskiptheme">' + t[n].v + '</ariai><ariai class="ariaskiptheme">' + t[n].key + "</ariai></ariab>" + "</div>"
+                }
+                activeBtn.innerHTML = r
+            }
+        } else {
+            activeBtn.innerText = text
+        }
+
         if (__isAssist || activeBtn.innerText == '文本') {
             activeBtn.innerText = ''
             return

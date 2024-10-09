@@ -34,7 +34,7 @@ const Audio = {
 
         if (this.speed == 'fast') {
             this.speedTabImg.src = this.speedTabImg.getAttribute('selected-src')
-        } else {
+        } else if (this.speed == 'middle') {
             this.speedTabImg.src = this.speedTabImg.getAttribute('source-src')
         }
     },
@@ -43,7 +43,7 @@ const Audio = {
         this.audioTab = document.getElementById(`${namespace}-audio`) || ''
         this.audioTabImg = this.audioTab.getElementsByTagName('img')[0]
 
-        this.speed = cookie.get('speed', namespace)
+        this.speed = cookie.get('speed', namespace) || 'middle'
         this.speedTab = document.getElementById(`${namespace}-audio-speed`) || ''
         this.speedTabImg = this.speedTab.getElementsByTagName('img')[0]
         this.pointeReadTab = document.getElementById(`${namespace}-pointeread`) || ''
@@ -61,6 +61,7 @@ const Audio = {
         }
 
         this.speedTab.onclick = () => {
+            console.log(this.speed)
             if (this.speed == 'middle') {
                 this.speed = 'fast'
                 this.speedTabImg.src = this.speedTabImg.getAttribute('selected-src')

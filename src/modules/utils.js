@@ -12,7 +12,9 @@ const cookie = {
         pointer: false,// 是否开启十字线
         bigtext: false,// 是否开启大字幕
         overead: true, // 是否开启指读
-        tiaose: '' // 调色
+        tiaose: '', // 调色
+        pinyin: true, // 拼音
+        jianti: true, // 简体字体或者繁体
       }
 
      if(Cookies.get(namespace)) {
