@@ -15,17 +15,13 @@ const TiaoSe = {
 	setEvents(core) {
 		const { namespace } = core.config
 		document.getElementById(`${namespace}-tiaose`).onclick = () => {
-
 			this.tiaose(core)
 		}
 		addEvent(window, 'DOMContentLoaded', () => {
 			this.updateTiaoseState(core)
 		})
-		//颜色
-		const BtnTiaose = document.getElementById(`${namespace}-tiaose`)
-		const BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0]
-		BtnTiaoseImg.style.border = `1px white solid`
-		BtnTiaoseImg.style.backgroundColor = 'blue'
+		//按钮颜色
+		this.updateBtnColor('blue')
 	},
 	updateTiaoseState(core) {
 		let { message } = core
@@ -95,6 +91,7 @@ const TiaoSe = {
 		const namespace = this.namespace
 		const BtnTiaose = document.getElementById(`${namespace}-tiaose`)
 		const BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0]
+		BtnTiaoseImg.style.border = `1px white solid`
 		BtnTiaoseImg.style.backgroundColor = color
 	},
 	reset() {

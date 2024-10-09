@@ -4016,11 +4016,8 @@
       addEvent(window, 'DOMContentLoaded', function () {
         _this.updateTiaoseState(core);
       });
-      //颜色
-      var BtnTiaose = document.getElementById("".concat(namespace, "-tiaose"));
-      var BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0];
-      BtnTiaoseImg.style.border = "1px white solid";
-      BtnTiaoseImg.style.backgroundColor = 'blue';
+      //按钮颜色
+      this.updateBtnColor('blue');
     },
     updateTiaoseState: function updateTiaoseState(core) {
       var message = core.message;
@@ -4088,6 +4085,7 @@
       var namespace = this.namespace;
       var BtnTiaose = document.getElementById("".concat(namespace, "-tiaose"));
       var BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0];
+      BtnTiaoseImg.style.border = "1px white solid";
       BtnTiaoseImg.style.backgroundColor = color;
     },
     reset: function reset() {
