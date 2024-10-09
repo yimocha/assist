@@ -2915,14 +2915,12 @@
       var BtnClose = document.getElementById("".concat(namespace, "-close"));
       var BtnReset = document.getElementById("".concat(namespace, "-reset"));
       var HoverItem = document.getElementById("".concat(namespace, "-topbar-html-content"));
-      var BtnBigText = document.getElementById("".concat(namespace, "-bigtext"));
       BtnClose.onclick = function () {
         core.close();
       };
       BtnReset.onclick = function () {
         core.resetAction();
       };
-      BtnBigText.onclick = function () {};
       if (isFirefox()) {
         document.getElementById("".concat(namespace, "-zoom-out")).style.display = 'none';
         document.getElementById("".concat(namespace, "-zoom-min")).style.display = 'none';
@@ -4031,7 +4029,6 @@
     tiaose: function tiaose(core) {
       var _arr$find,
         _this2 = this;
-      var namespace = core.config.namespace;
       var arr = [{
         name: 'blue',
         color: "red"
@@ -4042,8 +4039,6 @@
         name: 'yellow',
         color: "black"
       }];
-      var BtnTiaose = document.getElementById("".concat(namespace, "-tiaose"));
-      var BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0];
 
       //const found = arr.find(elem => elem.name === this.size);
       var mysize = this.size;
@@ -4061,9 +4056,9 @@
         return f.name == _this2.size;
       })) === null || _arr$find === void 0 ? void 0 : _arr$find.color;
       if (nextColor) {
-        BtnTiaoseImg.style.backgroundColor = nextColor;
+        this.updateBtnColor(nextColor);
       } else {
-        BtnTiaoseImg.style.backgroundColor = 'blue';
+        this.updateBtnColor('blue');
       }
 
       // this.size = parseFloat((this.size+0.1).toFixed(10));  
@@ -4089,9 +4084,16 @@
       console.log("tiaose", document.body.style);
       cookie.set('tiaose', this.size, this.namespace);
     },
+    updateBtnColor: function updateBtnColor(color) {
+      var namespace = this.namespace;
+      var BtnTiaose = document.getElementById("".concat(namespace, "-tiaose"));
+      var BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0];
+      BtnTiaoseImg.style.backgroundColor = color;
+    },
     reset: function reset() {
       this.size = "";
       this.set();
+      this.updateBtnColor('blue');
     }
   };
 

@@ -32,8 +32,6 @@ const TiaoSe = {
 		message.publish('tiaoseState', this.size)
 	},
 	tiaose(core) {
-		const { namespace } = core.config
-
 		var arr = [
 			{
 				name: 'blue',
@@ -46,12 +44,9 @@ const TiaoSe = {
 				color: "black"
 			}]
 
-		const BtnTiaose = document.getElementById(`${namespace}-tiaose`)
-		const BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0]
-
 		//const found = arr.find(elem => elem.name === this.size);
 		let mysize = this.size
-		console.log('mysize:'+mysize)
+		console.log('mysize:' + mysize)
 		const found = arr.findIndex(function (val) {
 			return val.name == mysize
 		})
@@ -65,9 +60,9 @@ const TiaoSe = {
 
 		let nextColor = arr.find(f => f.name == this.size)?.color
 		if (nextColor) {
-			BtnTiaoseImg.style.backgroundColor = nextColor
+			this.updateBtnColor(nextColor)
 		} else {
-			BtnTiaoseImg.style.backgroundColor = 'blue'
+			this.updateBtnColor('blue')
 		}
 
 		// this.size = parseFloat((this.size+0.1).toFixed(10));  
@@ -92,14 +87,20 @@ const TiaoSe = {
 
 		}
 
-
 		console.log("tiaose", document.body.style)
 
 		cookie.set('tiaose', this.size, this.namespace)
 	},
+	updateBtnColor(color) {
+		const namespace = this.namespace
+		const BtnTiaose = document.getElementById(`${namespace}-tiaose`)
+		const BtnTiaoseImg = BtnTiaose.getElementsByTagName('img')[0]
+		BtnTiaoseImg.style.backgroundColor = color
+	},
 	reset() {
 		this.size = ""
 		this.set()
+		this.updateBtnColor('blue')
 	}
 
 };
