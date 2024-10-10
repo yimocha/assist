@@ -106,9 +106,6 @@ const BigText = {
         var __parentNodeId = target.parentNode.id
         var __isAssist = __parentNodeId.indexOf(namespace) > -1
 
-        if (BigText.mouseOverTimeout) {
-            clearTimeout(BigText.mouseOverTimeout)
-        }
         if (target.classList.contains('ariaskiptheme')) {
             return
         }
@@ -118,7 +115,7 @@ const BigText = {
 
         BigText.mouseOverTimeout = setTimeout(() => {
             BigText.showBigText(target)
-        }, 600);
+        }, 500);
     },
     showBigText(target) {
         let text = parseTagText(target).replace(symbolsReg, '')
@@ -134,9 +131,9 @@ const BigText = {
         }
         if (pinyin) {
             if ("undefined" != typeof PinyinHelper) {
-                console.log('text:', text)
+                // console.log('text:', text)
                 let t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK)
-                console.log('pinyin:', t)
+                // console.log('pinyin:', t)
                 let html = ''
                 activeBtn.textContent = ''
                 for (var n = 0; n < t.length; n++) {

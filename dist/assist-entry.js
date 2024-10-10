@@ -4014,9 +4014,6 @@
       var namespace = BigText.namespace;
       var __parentNodeId = target.parentNode.id;
       var __isAssist = __parentNodeId.indexOf(namespace) > -1;
-      if (BigText.mouseOverTimeout) {
-        clearTimeout(BigText.mouseOverTimeout);
-      }
       if (target.classList.contains('ariaskiptheme')) {
         return;
       }
@@ -4025,7 +4022,7 @@
       }
       BigText.mouseOverTimeout = setTimeout(function () {
         BigText.showBigText(target);
-      }, 600);
+      }, 500);
     },
     showBigText: function showBigText(target) {
       var text = parseTagText(target).replace(symbolsReg, '');
@@ -4041,9 +4038,9 @@
       }
       if (pinyin) {
         if ("undefined" != typeof PinyinHelper) {
-          console.log('text:', text);
+          // console.log('text:', text)
           var t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK);
-          console.log('pinyin:', t);
+          // console.log('pinyin:', t)
           var html = '';
           activeBtn.textContent = '';
           for (var n = 0; n < t.length; n++) {
