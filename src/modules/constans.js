@@ -15,6 +15,10 @@ const audioTabText = {
     audioOpen: '声音已开启',
     audioClose: '声音关闭',
     reset: '已重置',
+    pinyinOpen: '拼音已启用',
+    pinyinClose: '拼音已关闭',
+    jiantiOpen: '简体已启用',
+    jiantiClose: '繁体已启用',
 }
 export const symbolsReg = new RegExp("[]")
 export default audioTabText

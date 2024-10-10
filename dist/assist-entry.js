@@ -318,12 +318,12 @@
     return it === null || it === undefined;
   };
 
-  var $TypeError$b = TypeError;
+  var $TypeError$c = TypeError;
 
   // `RequireObjectCoercible` abstract operation
   // https://tc39.es/ecma262/#sec-requireobjectcoercible
   var requireObjectCoercible = function (it) {
-    if (isNullOrUndefined(it)) throw new $TypeError$b("Can't call method on " + it);
+    if (isNullOrUndefined(it)) throw new $TypeError$c("Can't call method on " + it);
     return it;
   };
 
@@ -433,12 +433,12 @@
     }
   };
 
-  var $TypeError$a = TypeError;
+  var $TypeError$b = TypeError;
 
   // `Assert: IsCallable(argument) is true`
   var aCallable = function (argument) {
     if (isCallable(argument)) return argument;
-    throw new $TypeError$a(tryToString(argument) + ' is not a function');
+    throw new $TypeError$b(tryToString(argument) + ' is not a function');
   };
 
   // `GetMethod` abstract operation
@@ -448,7 +448,7 @@
     return isNullOrUndefined(func) ? undefined : aCallable(func);
   };
 
-  var $TypeError$9 = TypeError;
+  var $TypeError$a = TypeError;
 
   // `OrdinaryToPrimitive` abstract operation
   // https://tc39.es/ecma262/#sec-ordinarytoprimitive
@@ -457,7 +457,7 @@
     if (pref === 'string' && isCallable(fn = input.toString) && !isObject(val = functionCall(fn, input))) return val;
     if (isCallable(fn = input.valueOf) && !isObject(val = functionCall(fn, input))) return val;
     if (pref !== 'string' && isCallable(fn = input.toString) && !isObject(val = functionCall(fn, input))) return val;
-    throw new $TypeError$9("Can't convert object to primitive value");
+    throw new $TypeError$a("Can't convert object to primitive value");
   };
 
   // eslint-disable-next-line es/no-object-defineproperty -- safe
@@ -529,7 +529,7 @@
     } return WellKnownSymbolsStore[name];
   };
 
-  var $TypeError$8 = TypeError;
+  var $TypeError$9 = TypeError;
   var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
 
   // `ToPrimitive` abstract operation
@@ -542,7 +542,7 @@
       if (pref === undefined) pref = 'default';
       result = functionCall(exoticToPrim, input, pref);
       if (!isObject(result) || isSymbol(result)) return result;
-      throw new $TypeError$8("Can't convert object to primitive value");
+      throw new $TypeError$9("Can't convert object to primitive value");
     }
     if (pref === undefined) pref = 'number';
     return ordinaryToPrimitive(input, pref);
@@ -600,15 +600,15 @@
   });
 
   var $String$3 = String;
-  var $TypeError$7 = TypeError;
+  var $TypeError$8 = TypeError;
 
   // `Assert: Type(argument) is Object`
   var anObject = function (argument) {
     if (isObject(argument)) return argument;
-    throw new $TypeError$7($String$3(argument) + ' is not an object');
+    throw new $TypeError$8($String$3(argument) + ' is not an object');
   };
 
-  var $TypeError$6 = TypeError;
+  var $TypeError$7 = TypeError;
   // eslint-disable-next-line es/no-object-defineproperty -- safe
   var $defineProperty = Object.defineProperty;
   // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
@@ -641,7 +641,7 @@
     if (ie8DomDefine) try {
       return $defineProperty(O, P, Attributes);
     } catch (error) { /* empty */ }
-    if ('get' in Attributes || 'set' in Attributes) throw new $TypeError$6('Accessors not supported');
+    if ('get' in Attributes || 'set' in Attributes) throw new $TypeError$7('Accessors not supported');
     if ('value' in Attributes) O[P] = Attributes.value;
     return O;
   };
@@ -1286,11 +1286,11 @@
     window.location.origin = window.location.protocol + "//" + window.location.hostname + (window.location.port ? ':' + window.location.port : '');
   }
 
-  var $TypeError$5 = TypeError;
+  var $TypeError$6 = TypeError;
   var MAX_SAFE_INTEGER = 0x1FFFFFFFFFFFFF; // 2 ** 53 - 1 == 9007199254740991
 
   var doesNotExceedSafeInteger = function (it) {
-    if (it > MAX_SAFE_INTEGER) throw $TypeError$5('Maximum allowed index exceeded');
+    if (it > MAX_SAFE_INTEGER) throw $TypeError$6('Maximum allowed index exceeded');
     return it;
   };
 
@@ -1537,11 +1537,11 @@
     return isObject(it) && ((isRegExp = it[MATCH$2]) !== undefined ? !!isRegExp : classofRaw(it) === 'RegExp');
   };
 
-  var $TypeError$4 = TypeError;
+  var $TypeError$5 = TypeError;
 
   var notARegexp = function (it) {
     if (isRegexp(it)) {
-      throw new $TypeError$4("The method doesn't accept regular expressions");
+      throw new $TypeError$5("The method doesn't accept regular expressions");
     } return it;
   };
 
@@ -1942,7 +1942,7 @@
     });
   };
 
-  var $TypeError$3 = TypeError;
+  var $TypeError$4 = TypeError;
 
   // `RegExpExec` abstract operation
   // https://tc39.es/ecma262/#sec-regexpexec
@@ -1954,7 +1954,7 @@
       return result;
     }
     if (classofRaw(R) === 'RegExp') return functionCall(regexpExec, R, S);
-    throw new $TypeError$3('RegExp#exec called on incompatible receiver');
+    throw new $TypeError$4('RegExp#exec called on incompatible receiver');
   };
 
   var REPLACE = wellKnownSymbol('replace');
@@ -2448,7 +2448,7 @@
     }
   };
 
-  var $TypeError$2 = TypeError;
+  var $TypeError$3 = TypeError;
   // eslint-disable-next-line es/no-object-getownpropertydescriptor -- safe
   var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
 
@@ -2466,16 +2466,16 @@
 
   var arraySetLength = SILENT_ON_NON_WRITABLE_LENGTH_SET ? function (O, length) {
     if (isArray(O) && !getOwnPropertyDescriptor(O, 'length').writable) {
-      throw new $TypeError$2('Cannot set read only .length');
+      throw new $TypeError$3('Cannot set read only .length');
     } return O.length = length;
   } : function (O, length) {
     return O.length = length;
   };
 
-  var $TypeError$1 = TypeError;
+  var $TypeError$2 = TypeError;
 
   var deletePropertyOrThrow = function (O, P) {
-    if (!delete O[P]) throw new $TypeError$1('Cannot delete property ' + tryToString(P) + ' of ' + tryToString(O));
+    if (!delete O[P]) throw new $TypeError$2('Cannot delete property ' + tryToString(P) + ' of ' + tryToString(O));
   };
 
   var HAS_SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('splice');
@@ -3017,11 +3017,11 @@
   };
 
   var $String$1 = String;
-  var $TypeError = TypeError;
+  var $TypeError$1 = TypeError;
 
   var aPossiblePrototype = function (argument) {
     if (isPossiblePrototype(argument)) return argument;
-    throw new $TypeError("Can't set " + $String$1(argument) + ' as a prototype');
+    throw new $TypeError$1("Can't set " + $String$1(argument) + ' as a prototype');
   };
 
   /* eslint-disable no-proto -- safe */
@@ -3330,7 +3330,11 @@
     speedMiddle: '语速已正常',
     audioOpen: '声音已开启',
     audioClose: '声音关闭',
-    reset: '已重置'
+    reset: '已重置',
+    pinyinOpen: '拼音已启用',
+    pinyinClose: '拼音已关闭',
+    jiantiOpen: '简体已启用',
+    jiantiClose: '繁体已启用'
   };
   var symbolsReg = new RegExp("[]");
 
@@ -3850,22 +3854,74 @@
     }
   };
 
-  var styles = ".bigtext-html {\n  z-index: 99999999999;\n  height: 150px;\n  text-align: center;\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  border-top: 1px solid #797F8D;\n  background-color: #d9d9d9;\n  display: flex;\n}\n.bigtext-html-content {\n  height: 100%;\n  background-color: #d9d9d9;\n  font-size: 53px;\n  color: #333 !important;\n  text-align: center;\n  font-weight: bold;\n  width: 90%;\n  margin: 0 auto;\n  overflow: auto;\n}\n.bigtext-html-btn {\n  width: 20px;\n  height: 20px;\n  background-color: red;\n  position: absolute;\n  right: 20px;\n  top: 10px;\n  border-radius: 10px;\n  color: #FFFFFF;\n  cursor: pointer;\n}\n.bigtext-html-bone {\n  width: 100%;\n  height: 151px;\n}\n.bigtext-html-tool {\n  width: 120px;\n  height: 150px;\n  border-left: #333 1px solid;\n}\n.bigtext-html-tool-btn {\n  width: 75px;\n  height: 40px;\n  line-height: 40px;\n  border: #333 1px solid;\n  border-radius: 5px;\n  display: inline-block;\n  cursor: pointer;\n  font-size: 22px !important;\n  letter-spacing: 5px !important;\n  margin-bottom: 10px;\n}\n.bigtext-html-tool-btn:hover {\n  background-color: #f0f0f0;\n}\n\n.ariaPYTitle {\n  margin-top: 45px;\n}";
+  /* global Bun -- Bun case */
+  var engineIsBun = typeof Bun == 'function' && Bun && typeof Bun.version == 'string';
+
+  var arraySlice = functionUncurryThis([].slice);
+
+  var $TypeError = TypeError;
+
+  var validateArgumentsLength = function (passed, required) {
+    if (passed < required) throw new $TypeError('Not enough arguments');
+    return passed;
+  };
+
+  var Function$1 = global_1.Function;
+  // dirty IE9- and Bun 0.3.0- checks
+  var WRAP = /MSIE .\./.test(engineUserAgent) || engineIsBun && (function () {
+    var version = global_1.Bun.version.split('.');
+    return version.length < 3 || version[0] === '0' && (version[1] < 3 || version[1] === '3' && version[2] === '0');
+  })();
+
+  // IE9- / Bun 0.3.0- setTimeout / setInterval / setImmediate additional parameters fix
+  // https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers
+  // https://github.com/oven-sh/bun/issues/1633
+  var schedulersFix = function (scheduler, hasTimeArg) {
+    var firstParamIndex = hasTimeArg ? 2 : 1;
+    return WRAP ? function (handler, timeout /* , ...arguments */) {
+      var boundArgs = validateArgumentsLength(arguments.length, 1) > firstParamIndex;
+      var fn = isCallable(handler) ? handler : Function$1(handler);
+      var params = boundArgs ? arraySlice(arguments, firstParamIndex) : [];
+      var callback = boundArgs ? function () {
+        functionApply(fn, this, params);
+      } : fn;
+      return hasTimeArg ? scheduler(callback, timeout) : scheduler(callback);
+    } : scheduler;
+  };
+
+  var setInterval = schedulersFix(global_1.setInterval, true);
+
+  // Bun / IE9- setInterval additional parameters fix
+  // https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-setinterval
+  _export({ global: true, bind: true, forced: global_1.setInterval !== setInterval }, {
+    setInterval: setInterval
+  });
+
+  var setTimeout$1 = schedulersFix(global_1.setTimeout, true);
+
+  // Bun / IE9- setTimeout additional parameters fix
+  // https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#dom-settimeout
+  _export({ global: true, bind: true, forced: global_1.setTimeout !== setTimeout$1 }, {
+    setTimeout: setTimeout$1
+  });
+
+  var styles = ".bigtext-html {\n  z-index: 99999999999;\n  height: 150px;\n  text-align: center;\n  position: fixed;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  border-top: 1px solid #797F8D;\n  background-color: #505050;\n  display: flex;\n}\n.bigtext-html-content {\n  height: 100%;\n  font-size: 53px;\n  background-color: #505050;\n  color: #fff !important;\n  text-align: center;\n  font-weight: bold;\n  width: calc(100vw - 120px);\n  margin: 0 auto;\n  overflow-x: hidden;\n}\n.bigtext-html-btn {\n  width: 20px;\n  height: 20px;\n  background-color: red;\n  position: absolute;\n  right: 20px;\n  top: 10px;\n  border-radius: 10px;\n  color: #FFFFFF;\n  cursor: pointer;\n}\n.bigtext-html-bone {\n  width: 100%;\n  height: 151px;\n}\n.bigtext-html-tool {\n  width: 120px;\n  height: 150px;\n  border-left: #333 1px solid;\n}\n.bigtext-html-tool-btn {\n  width: 75px;\n  height: 40px;\n  line-height: 40px;\n  border: #333 1px solid;\n  border-radius: 5px;\n  display: inline-block;\n  cursor: pointer;\n  font-size: 22px !important;\n  letter-spacing: 5px !important;\n  margin-bottom: 10px;\n}\n.bigtext-html-tool-btn:hover {\n  background-color: #f0f0f0;\n}\n\n.ariaPYTitle {\n  margin-top: 45px;\n}\n\n.pinyin {\n  float: left;\n  margin-left: 5px;\n}\n.pinyin ariab {\n  display: flex;\n  flex-direction: column;\n  /*&:after {\n      content: \"\";\n      position: absolute;\n      width: 1px;\n      height: 35px;\n      z-index: -1;\n      left: 17.5px;\n      bottom: 0;\n      border-left: dashed 1px #7a7a7a;\n      background-color: #505050 !important;\n  }*/\n}\n.pinyin ariab > ariai:first-child {\n  display: block;\n  letter-spacing: 0.5px;\n  color: wheat !important;\n  font-size: 14pt !important;\n  font-weight: 400;\n  height: 30px;\n  line-height: 30px;\n  font-family: \"Helvetica Neue\", Helvetica, Arial, sans-serif;\n}\n.pinyin ariab > ariai:last-child {\n  width: 35px;\n  height: 35px;\n  line-height: 35px;\n  font-size: 24pt !important;\n  font-weight: normal;\n  position: relative;\n  z-index: 10;\n  border: solid 1px #7a7a7a !important;\n  background-color: transparent;\n  color: #fff !important;\n  margin: 0 auto;\n}\n.pinyin ariab > ariai {\n  display: block !important;\n  clear: both;\n}\n.pinyin ariab > ariai:last-child::before {\n  content: \"\";\n  position: absolute;\n  width: 47.5px;\n  height: 47.5px;\n  z-index: -1;\n  left: 0;\n  bottom: 0;\n  transform-origin: left bottom;\n  transform: rotate(45deg);\n  border-left: dashed 1px #7a7a7a !important;\n}\n.pinyin ariab > ariai:last-child::after {\n  content: \"\";\n  position: absolute;\n  width: 47.5px;\n  height: 47.5px;\n  z-index: -1;\n  right: 0;\n  bottom: 0;\n  transform-origin: right bottom;\n  transform: rotate(-45deg);\n  border-right: dashed 1px #7a7a7a !important;\n}";
 
   var BigTextHtml = function BigTextHtml(namespace) {
-    return "<div id='".concat(namespace, "-bigtext-html' class='bigtext-html'>\n           <div id='").concat(namespace, "-bigtext-content' class='bigtext-html-content'></div>\n           <ariali class=\"bigtext-html-tool\">\n               <div class='bigtext-html-btn' id='").concat(namespace, "-bigtext-close'>\n                  <i class='bigtext-html-close' role='button' title='\u5F53\u524D\u5927\u5B57\u5E55\u5DF2\u5F00\u542F\uFF0C\u5173\u95ED\u5927\u5B57\u5E55\u8BF7\u6309Ctrl+Alt+B'>X</i>\n               </div>\n               <arialabel id=\"").concat(namespace, "-accscreen-py\" class=\"ariaPYTitle bigtext-html-tool-btn\" title=\"\u62FC\u97F3\u5DF2\u542F\u7528\">\u62FC\u97F3</arialabel>\n               <arialabel id=\"").concat(namespace, "-accscreen-jt\" class=\"ariaFontTitle bigtext-html-tool-btn\" title=\"\u7B80\u4F53\u5DF2\u542F\u7528\">\u7E41\u4F53</arialabel>\n           </ariali>\n        </div>");
+    return "<div id='".concat(namespace, "-bigtext-html' class='bigtext-html ariaskiptheme'>\n           <div id='").concat(namespace, "-bigtext-content' class='bigtext-html-content ariaskiptheme'></div>\n           <ariali class=\"bigtext-html-tool ariaskiptheme\">\n               <div class='bigtext-html-btn' id='").concat(namespace, "-bigtext-close'>\n                  <i class='bigtext-html-close' role='button' title='\u5F53\u524D\u5927\u5B57\u5E55\u5DF2\u5F00\u542F\uFF0C\u5173\u95ED\u5927\u5B57\u5E55\u8BF7\u6309Ctrl+Alt+B'>X</i>\n               </div>\n               <arialabel id=\"").concat(namespace, "-accscreen-py\" class=\"ariaPYTitle bigtext-html-tool-btn\" title=\"\u62FC\u97F3\u5DF2\u542F\u7528\">\u62FC\u97F3</arialabel>\n               <arialabel id=\"").concat(namespace, "-accscreen-jt\" class=\"ariaFontTitle bigtext-html-tool-btn\" title=\"\u7B80\u4F53\u5DF2\u542F\u7528\">\u7E41\u4F53</arialabel>\n           </ariali>\n        </div>");
   };
   var BigTextBone = function BigTextBone() {
     return "<div class='bigtext-html-bone'></div>";
   };
 
   var BigText = {
+    mouseOverTimeout: null,
     init: function init(core) {
       var namespace = core.config.namespace;
       this.body = document.body;
       this.namespace = namespace;
-      this.pinyin = cookie.get('pinyin', namespace);
-      this.jianti = cookie.get('jianti', namespace);
+      this.pinyin = cookie.get('pinyin', namespace) || true;
+      this.jianti = cookie.get('jianti', namespace) || true;
       core.creatStyle('bigtext-style', styles);
       core.creatHtml('bigtext-html', BigTextHtml);
       core.creatHtml('bigtext-bone', BigTextBone);
@@ -3879,32 +3935,76 @@
         }
       });
       this.toggleBigText(core, namespace);
+      this.togglePinyin(core, namespace);
+      this.toggleJianti(core, namespace);
+    },
+    togglePinyin: function togglePinyin(core, namespace) {
+      var _this2 = this;
+      var pinyinBtn = document.getElementById("".concat(namespace, "-accscreen-py"));
+      pinyinBtn.onclick = function () {
+        if (_this2.pinyin) {
+          _this2.pinyin = false;
+          pinyinBtn.setAttribute('title', audioTabText.pinyinClose);
+          _this2.putTextToBigText(audioTabText.pinyinClose);
+          Audio.playAudio(audioTabText.pinyinClose);
+        } else {
+          _this2.pinyin = true;
+          pinyinBtn.setAttribute('title', audioTabText.pinyinOpen);
+          _this2.putTextToBigText(audioTabText.pinyinOpen);
+          Audio.playAudio(audioTabText.pinyinOpen);
+        }
+        cookie.set('pinyin', _this2.pinyin, namespace);
+      };
+    },
+    toggleJianti: function toggleJianti(core, namespace) {
+      var _this3 = this;
+      var jiantiBtn = document.getElementById("".concat(namespace, "-accscreen-jt"));
+      jiantiBtn.onclick = function () {
+        if (_this3.jianti) {
+          _this3.jianti = false;
+          jiantiBtn.setAttribute('title', audioTabText.jiantiClose);
+          jiantiBtn.innerText = '简体';
+          _this3.putTextToBigText(audioTabText.jiantiClose);
+          Audio.playAudio(audioTabText.jiantiClose);
+        } else {
+          _this3.jianti = true;
+          jiantiBtn.setAttribute('title', audioTabText.jiantiOpen);
+          jiantiBtn.innerText = '繁体';
+          _this3.putTextToBigText(audioTabText.jiantiOpen);
+          Audio.playAudio(audioTabText.jiantiOpen);
+        }
+        cookie.set('jianti', _this3.jianti, namespace);
+      };
     },
     addEventMove: function addEventMove() {
       addEvent(this.body, 'mouseover', this.mouseOver);
+      // 当鼠标移开元素时清除计时器
+      document.addEventListener('mouseout', function (event) {
+        clearTimeout(BigText.mouseOverTimeout);
+      });
     },
     removeEventMove: function removeEventMove() {
       removeEvent(this.body, 'mouseover', this.mouseOver);
     },
     toggleBigText: function toggleBigText(core, namespace) {
-      var _this2 = this;
+      var _this4 = this;
       var tabBarBtn = document.getElementById("".concat(namespace, "-bigtext"));
       var tabBarBtnImg = tabBarBtn.getElementsByTagName('img')[0];
       var tabBarBtnClose = document.getElementById("".concat(namespace, "-bigtext-close"));
       tabBarBtn.onclick = function () {
         var activeBtn = document.getElementById("".concat(namespace, "-bigtext-html"));
         if (activeBtn.style.display == 'block') {
-          _this2.reset(core);
+          _this4.reset(core);
           Audio.playAudio(audioTabText.bigtextClose);
           tabBarBtnImg.src = tabBarBtnImg.getAttribute('source-src');
         } else {
-          _this2.show(core);
+          _this4.show(core);
           Audio.playAudio(audioTabText.bigtextOpen);
           tabBarBtnImg.src = tabBarBtnImg.getAttribute('selected-src');
         }
       };
       tabBarBtnClose.onclick = function () {
-        _this2.reset(core);
+        _this4.reset(core);
         Audio.playAudio(audioTabText.bigtextClose);
       };
     },
@@ -3914,25 +4014,45 @@
       var namespace = BigText.namespace;
       var __parentNodeId = target.parentNode.id;
       var __isAssist = __parentNodeId.indexOf(namespace) > -1;
-      var activeBtn = document.getElementById("".concat(namespace, "-bigtext-content"));
+      if (BigText.mouseOverTimeout) {
+        clearTimeout(BigText.mouseOverTimeout);
+      }
+      if (target.classList.contains('ariaskiptheme')) {
+        return;
+      }
+      if (__isAssist) {
+        return;
+      }
+      BigText.mouseOverTimeout = setTimeout(function () {
+        BigText.showBigText(target);
+      }, 600);
+    },
+    showBigText: function showBigText(target) {
       var text = parseTagText(target).replace(symbolsReg, '');
-      if (this.pinyin) {
+      this.putTextToBigText(text);
+    },
+    putTextToBigText: function putTextToBigText(text) {
+      var namespace = BigText.namespace;
+      var pinyin = cookie.get('pinyin', namespace);
+      var jianti = cookie.get('jianti', namespace);
+      var activeBtn = document.getElementById("".concat(namespace, "-bigtext-content"));
+      if (!jianti) {
+        text = ChineseHelper.convertToTraditionalChinese(text);
+      }
+      if (pinyin) {
         if ("undefined" != typeof PinyinHelper) {
           console.log('text:', text);
           var t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK);
-          console.log('t:', t);
-          var r = "";
+          console.log('pinyin:', t);
+          var html = '';
+          activeBtn.textContent = '';
           for (var n = 0; n < t.length; n++) {
-            r += '<div class="pinyin ariaskiptheme">' + '<ariab class="ariaskiptheme"><ariai class="ariaskiptheme">' + t[n].v + '</ariai><ariai class="ariaskiptheme">' + t[n].key + "</ariai></ariab>" + "</div>";
+            html += "<div class=\"pinyin ariaskiptheme\">\n                            <ariab class=\"ariaskiptheme\">\n                                <ariai class=\"ariaskiptheme\">".concat(t[n].v, "</ariai>\n                                <ariai class=\"ariaskiptheme\">").concat(jianti ? t[n].key : ChineseHelper.convertToTraditionalChinese(t[n].key), "</ariai>\n                            </ariab>\n                          </div>");
           }
-          activeBtn.innerHTML = r;
+          activeBtn.innerHTML = html;
         }
       } else {
         activeBtn.innerText = text;
-      }
-      if (__isAssist || activeBtn.innerText == '文本') {
-        activeBtn.innerText = '';
-        return;
       }
     },
     show: function show(core) {

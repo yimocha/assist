@@ -6,12 +6,16 @@ import styles from './index.scss'
 import { BigTextHtml, BigTextBone } from './index.tmpl.js'
 
 const BigText = {
+
+    mouseOverTimeout: null,
+    
     init(core) {
         const { namespace } = core.config
+        
         this.body = document.body
         this.namespace = namespace
-        this.pinyin = cookie.get('pinyin', namespace)
-        this.jianti = cookie.get('jianti', namespace)
+        this.pinyin = cookie.get('pinyin', namespace) || true
+        this.jianti = cookie.get('jianti', namespace) || true
         core.creatStyle('bigtext-style', styles)
         core.creatHtml('bigtext-html', BigTextHtml)
         core.creatHtml('bigtext-bone', BigTextBone)
@@ -24,9 +28,51 @@ const BigText = {
             }
         })
         this.toggleBigText(core, namespace)
+        this.togglePinyin(core, namespace)
+        this.toggleJianti(core, namespace)
+    },
+    togglePinyin(core, namespace) {
+        const pinyinBtn = document.getElementById(`${namespace}-accscreen-py`)
+        pinyinBtn.onclick = () => {
+            if (this.pinyin) {
+                this.pinyin = false
+                pinyinBtn.setAttribute('title', audioTabText.pinyinClose)
+                this.putTextToBigText(audioTabText.pinyinClose)
+                Audio.playAudio(audioTabText.pinyinClose)
+            } else {
+                this.pinyin = true
+                pinyinBtn.setAttribute('title', audioTabText.pinyinOpen)
+                this.putTextToBigText(audioTabText.pinyinOpen)
+                Audio.playAudio(audioTabText.pinyinOpen)
+            }
+            cookie.set('pinyin', this.pinyin, namespace)
+        }
+    },
+    toggleJianti(core, namespace) {
+        const jiantiBtn = document.getElementById(`${namespace}-accscreen-jt`)
+        jiantiBtn.onclick = () => {
+            if (this.jianti) {
+                this.jianti = false
+                jiantiBtn.setAttribute('title', audioTabText.jiantiClose)
+                jiantiBtn.innerText = '简体'
+                this.putTextToBigText(audioTabText.jiantiClose)
+                Audio.playAudio(audioTabText.jiantiClose)
+            } else {
+                this.jianti = true
+                jiantiBtn.setAttribute('title', audioTabText.jiantiOpen)
+                jiantiBtn.innerText = '繁体'
+                this.putTextToBigText(audioTabText.jiantiOpen)
+                Audio.playAudio(audioTabText.jiantiOpen)
+            }
+            cookie.set('jianti', this.jianti, namespace)
+        }
     },
     addEventMove() {
         addEvent(this.body, 'mouseover', this.mouseOver)
+        // 当鼠标移开元素时清除计时器
+        document.addEventListener('mouseout', function (event) {
+            clearTimeout(BigText.mouseOverTimeout);
+        });
     },
     removeEventMove() {
         removeEvent(this.body, 'mouseover', this.mouseOver)
@@ -59,28 +105,52 @@ const BigText = {
         const { namespace } = BigText
         var __parentNodeId = target.parentNode.id
         var __isAssist = __parentNodeId.indexOf(namespace) > -1
-        const activeBtn = document.getElementById(`${namespace}-bigtext-content`)
 
+        if (BigText.mouseOverTimeout) {
+            clearTimeout(BigText.mouseOverTimeout)
+        }
+        if (target.classList.contains('ariaskiptheme')) {
+            return
+        }
+        if (__isAssist) {
+            return
+        }
+
+        BigText.mouseOverTimeout = setTimeout(() => {
+            BigText.showBigText(target)
+        }, 600);
+    },
+    showBigText(target) {
         let text = parseTagText(target).replace(symbolsReg, '')
-
-        if (this.pinyin) {
+        this.putTextToBigText(text)
+    },
+    putTextToBigText(text) {
+        const { namespace } = BigText
+        var pinyin = cookie.get('pinyin', namespace)
+        var jianti = cookie.get('jianti', namespace)
+        const activeBtn = document.getElementById(`${namespace}-bigtext-content`)
+        if (!jianti) {
+            text = ChineseHelper.convertToTraditionalChinese(text)
+        }
+        if (pinyin) {
             if ("undefined" != typeof PinyinHelper) {
                 console.log('text:', text)
                 let t = PinyinHelper.convertToPinyin(text, PinyinFormat.WITH_TONE_MARK)
-                console.log('t:', t)
-                let r = "";
+                console.log('pinyin:', t)
+                let html = ''
+                activeBtn.textContent = ''
                 for (var n = 0; n < t.length; n++) {
-                    r += '<div class="pinyin ariaskiptheme">' + '<ariab class="ariaskiptheme"><ariai class="ariaskiptheme">' + t[n].v + '</ariai><ariai class="ariaskiptheme">' + t[n].key + "</ariai></ariab>" + "</div>"
+                    html += `<div class="pinyin ariaskiptheme">
+                            <ariab class="ariaskiptheme">
+                                <ariai class="ariaskiptheme">${t[n].v}</ariai>
+                                <ariai class="ariaskiptheme">${jianti ? t[n].key : ChineseHelper.convertToTraditionalChinese(t[n].key)}</ariai>
+                            </ariab>
+                          </div>`
                 }
-                activeBtn.innerHTML = r
+                activeBtn.innerHTML = html
             }
         } else {
             activeBtn.innerText = text
-        }
-
-        if (__isAssist || activeBtn.innerText == '文本') {
-            activeBtn.innerText = ''
-            return
         }
     },
     show(core) {

@@ -1,7 +1,7 @@
 const BigTextHtml = (namespace) => {
-   return `<div id='${namespace}-bigtext-html' class='bigtext-html'>
-           <div id='${namespace}-bigtext-content' class='bigtext-html-content'></div>
-           <ariali class="bigtext-html-tool">
+   return `<div id='${namespace}-bigtext-html' class='bigtext-html ariaskiptheme'>
+           <div id='${namespace}-bigtext-content' class='bigtext-html-content ariaskiptheme'></div>
+           <ariali class="bigtext-html-tool ariaskiptheme">
                <div class='bigtext-html-btn' id='${namespace}-bigtext-close'>
                   <i class='bigtext-html-close' role='button' title='当前大字幕已开启，关闭大字幕请按Ctrl+Alt+B'>X</i>
                </div>

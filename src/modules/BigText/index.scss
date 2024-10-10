@@ -14,18 +14,18 @@
     right: 0;
     left: 0;
     border-top: 1px solid #797F8D;
-    background-color: #d9d9d9;
+    background-color: #505050;
     display: flex;
     &-content {
         height: 100%;
-        background-color: #d9d9d9;
         font-size: 53px;
-        color: #333 !important;
+        background-color: #505050;
+        color: #fff !important;
         text-align: center;
         font-weight: bold;
-        width: 90%;
+        width: calc(100vw - 120px);
         margin: 0 auto;
-        overflow: auto;
+        overflow-x: hidden;
     }
 
     &-btn {
@@ -69,4 +69,75 @@
 }
 .ariaPYTitle {
     margin-top: 45px;
+}
+
+.pinyin {
+    float: left;
+    margin-left: 5px;
+    & ariab {
+        display: flex;
+        flex-direction: column;
+        &>ariai:first-child {
+            display: block;
+            letter-spacing: .5px;
+            color: wheat !important;
+            font-size: 14pt !important;
+            font-weight: 400;
+            height: 30px;
+            line-height: 30px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        &>ariai:last-child {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 24pt !important;
+            font-weight: normal;
+            position: relative;
+            z-index: 10;
+            border: solid 1px #7a7a7a !important;
+            background-color: transparent;
+            color: #fff !important;
+            margin: 0 auto;
+        }
+        &>ariai {
+            display: block !important;
+            clear: both;
+        }
+        &>ariai:last-child::before {
+            content: "";
+            position: absolute;
+            width: 47.5px;
+            height: 47.5px;
+            z-index: -1;
+            left: 0;
+            bottom: 0;
+            transform-origin: left bottom;
+            transform: rotate(45deg);
+            border-left: dashed 1px #7a7a7a !important;
+        }
+        &>ariai:last-child::after {
+            content: "";
+            position: absolute;
+            width: 47.5px;
+            height: 47.5px;
+            z-index: -1;
+            right: 0;
+            bottom: 0;
+            transform-origin: right bottom;
+            transform: rotate(-45deg);
+            border-right: dashed 1px #7a7a7a !important;
+        }
+        /*&:after {
+            content: "";
+            position: absolute;
+            width: 1px;
+            height: 35px;
+            z-index: -1;
+            left: 17.5px;
+            bottom: 0;
+            border-left: dashed 1px #7a7a7a;
+            background-color: #505050 !important;
+        }*/
+    }
 }
