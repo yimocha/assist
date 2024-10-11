@@ -8,7 +8,7 @@
 
 ## 功能
 
-1.文本朗读   2.页面放大&缩小   3.大鼠标样式   4.十字线   5.大字幕  6.指读
+1.文本朗读   2.页面放大&缩小   3.大鼠标样式   4.十字线   5.大字幕  6.指读 7.调色 8.大字幕增加拼音、简体、繁体的切换
 
 ## 演示地址
 
@@ -19,7 +19,6 @@ https://muzihuaner.github.io/assist/example/index.html
 - 在网页合适的地方如banner处加入id为 assist-open 的标签；
 - 在页面底部 body 之前引入插件js；
 - 如果需要特殊处理的地方使用后面的API做对应处理；
-- 在网页根目录上传 /src/assets/allaw.cur文件;
 
 例子：
 
@@ -35,6 +34,7 @@ https://muzihuaner.github.io/assist/example/index.html
 <body>
     <div id='assist-open'>无障碍</div>
     <script type="text/javascript" src="../dist/assist-entry.js"></script>
+    <script type="text/javascript" src="../dist/pinyin.min.js"></script>
 </body>
 </html>
 ```
@@ -221,8 +221,5 @@ CDN地址（可替换）
 参考：
 https://github.com/duheng/assist
 
-https://github.com/gemgin/AmblyopiaTool
-
-https://blog.csdn.net/Z51047299/article/details/123617530
 
 本项目使用了网易有道词典语音API
