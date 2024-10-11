@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>网站无障碍声明及操作说明</title>
+    <style>
+        @charset "utf-8";
+
+        body,
+        dd,
+        dl,
+        p {
+            margin: 0
+        }
+
+        body {
+            background-color: #f2f2f2
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin: 0;
+            font-weight: 400
+        }
+
+        ul {
+            margin: 0;
+            padding: 0
+        }
+
+        li {
+            list-style: none
+        }
+
+        a {
+            text-decoration: none;
+            color: #333
+        }
+
+        img {
+            display: block;
+            border: none
+        }
+
+        input {
+            margin: 0;
+            padding: 0;
+            border: none;
+            outline: 0
+        }
+
+        .clearfix {
+            clear: both
+        }
+
+        .head {
+            width: 100%;
+            background: #fff
+        }
+
+        .head_top {
+            width: 1100px;
+            margin: 0 auto;
+            height: 64px;
+            background: #fff;
+            padding-top: 10px;
+            padding-bottom: 10px
+        }
+
+        .content {
+            width: 1100px;
+            margin: 0 auto;
+            background: #fff
+        }
+
+        .head_left {
+            float: left
+        }
+
+        .head_left h1 {
+            font-size: 30px;
+            color: #d7141c;
+            font-weight: 700;
+            line-height: 64px
+        }
+
+        .head_right {
+            float: right
+        }
+
+        .head_right input {
+            width: 300px;
+            height: 30px;
+            border: 2px solid #d2d2d2;
+            border-radius: 30px;
+            margin-top: 16px;
+            background-image: url(../img/fada.png);
+            background-repeat: no-repeat;
+            background-position: 275px 5px
+        }
+
+        .nav {
+            width: 1100px;
+            margin: 0 auto;
+            background: #265f95
+        }
+
+        .accnode {
+            max-width: 1px !important;
+            float: left !important;
+            border: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            display: block !important;
+            position: absolute !important
+        }
+
+        .nav li {
+            float: left;
+            height: 37px;
+            width: 8%
+        }
+
+        .nav li .currentmenu {
+            border-bottom: 3px solid #fff
+        }
+
+        .nav li a {
+            line-height: 37px;
+            font-size: 20px;
+            color: #fff;
+            font-weight: 700;
+            text-align: center;
+            padding: 0 20px;
+            border-right: 1px solid #bfbfbf;
+            float: left
+        }
+
+        .column1 {
+            text-align: center;
+            height: auto
+        }
+
+        .column1_1 {
+            padding-top: 28px;
+            padding-bottom: 12px;
+            font-family: "微软雅黑", "宋体"
+        }
+
+        .column1_1 a {
+            color: #005293;
+            font-size: 39px;
+            font-family: "宋体";
+            font-weight: 700
+        }
+
+        .column1_2 {
+            height: auto;
+            overflow: hidden;
+            color: #005293;
+            font-family: "微软雅黑", "宋体";
+            font-size: 18px;
+            display: inline;
+            padding-top: 5px
+        }
+
+        .column1_2 a {
+            font-size: 18px;
+            color: #005293;
+            padding: 0;
+            margin: 0
+        }
+
+        .new {
+            width: 1100px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+            height: inherit
+        }
+
+        #topNav {
+            width: 100%;
+            overflow: hidden;
+            height: 380px
+        }
+
+        .swiper-container {
+            margin: 0 auto;
+            position: relative;
+            z-index: 1
+        }
+
+        #topNav .swiper-wrapper {
+            width: 700px;
+            margin: 0 auto;
+            position: relative
+        }
+
+        .swiper-wrapper {
+            height: 100%;
+            z-index: 1;
+            display: flex;
+            transition-property: transform;
+            box-sizing: content-box
+        }
+
+        #topNav .swiper-slide {
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            overflow: hidden
+        }
+
+        .swiper-slide {
+            flex-shrink: 0;
+            height: 100%
+        }
+
+        #topNav .swiper-slide img {
+            width: 100%
+        }
+
+        #topNav .swiper-slide .txx1 {
+            position: absolute;
+            top: 65%;
+            left: -300px;
+            z-index: 9999;
+            width: 300px;
+            height: 100px;
+            background-color: #000;
+            opacity: .8;
+            color: #fff;
+            font-size: 1.2em;
+            padding-top: 5px;
+            padding-left: 10px
+        }
+
+        #topNav .swiper-slide .txx1 a {
+            color: #fff
+        }
+
+        #topNav .swiper-button-prev {
+            position: absolute;
+            height: 100%;
+            width: 200px;
+            bottom: 0;
+            left: 0;
+            top: 0;
+            margin-top: 0
+        }
+
+        .swiper-button-next img,
+        .swiper-button-prev img {
+            position: absolute;
+            top: 50%;
+            margin-top: -14.5px;
+            left: 50%;
+            margin-left: -10px;
+            opacity: .5
+        }
+
+        .swiper-button-prev,
+        .swiper-container-rtl .swiper-button-next {
+            background: url(../images/arrowleft.png);
+            right: auto;
+            background-color: rgba(0, 0, 0, .3)
+        }
+
+        .swiper-button-next,
+        .swiper-container-rtl .swiper-button-prev {
+            background: url(../images/arrowright.png);
+            left: auto;
+            background-color: rgba(0, 0, 0, .3)
+        }
+
+        #topNav .swiper-button-next {
+            position: absolute;
+            height: 100%;
+            width: 200px;
+            bottom: 0;
+            right: 0;
+            top: 0;
+            margin-top: 0
+        }
+
+        .con_tab {
+            width: 1100px;
+            margin: 0 auto;
+            padding-top: 10px
+        }
+
+        .tab_head {
+            width: 100%;
+            margin: 0 auto;
+            border-bottom: 1px solid #bdbdbd
+        }
+
+        .tab_headf1 {
+            float: left
+        }
+
+        .tab_headf1 h1 {
+            font-size: 22px;
+            color: #000;
+            font-family: "宋体";
+            font-weight: 700;
+            margin-left: 20px
+        }
+
+        .tab_headf2 {
+            float: right
+        }
+
+        .card-toggler {
+            background: #9e1d0a
+        }
+
+        .card-toggler .active {
+            background: 0;
+            color: #fff;
+            border: 0
+        }
+
+        .card-toggler li {
+            display: inline-block;
+            float: left;
+            color: #666;
+            line-height: 30px;
+            padding: 0 10px;
+            background: #fafafa;
+            cursor: pointer;
+            border: 1px solid #bdbdbd;
+            font-size: 12px;
+            border-bottom: none
+        }
+
+        .card-toggler li i {
+            display: inline-block;
+            height: 14px;
+            width: 16px;
+            background: url(../img/card-list.png) no-repeat;
+            vertical-align: -3px;
+            margin-left: 3px
+        }
+
+        .card-toggler li.card-btn i {
+            background-position: -3px -23px
+        }
+
+        .card-toggler li.list-btn i {
+            background-position: -22px -3px
+        }
+
+        .card-toggler li.video i {
+            background-position: -42px -23px
+        }
+
+        .big_inf {
+            width: 100%;
+            margin: 0 auto;
+            background: #fff
+        }
+
+        .ka_p {
+            width: 100%;
+            overflow: hidden
+        }
+
+        .lie_b {
+            width: 1124px
+        }
+
+        .ka_p .pub_lish {
+            padding: 30px 30px 30px;
+            min-height: 110px;
+            max-height: none;
+            height: auto;
+            border-bottom: 1px solid #f0f0f0
+        }
+
+        .ka_p .pub_lish:hover {
+            background-color: #f7f8fd;
+            z-index: 10;
+            border-right: 2px solid #d2d2d2;
+            border-bottom: 2px solid #d2d2d2
+        }
+
+        .ka_p .pub_lish h1 {
+            color: #000;
+            font-size: 18px;
+            font-weight: 700;
+            max-height: 50px;
+            line-height: 26px;
+            margin-bottom: 10px;
+            width: 95%;
+            overflow: hidden
+        }
+
+        .ka_p .pub_lish h1 a {
+            color: #4c4c4c
+        }
+
+        .ka_p .pub_lish p {
+            line-height: 20px;
+            font-size: 14px;
+            max-height: 44px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            margin-top: 0;
+            font-weight: 500;
+            height: auto
+        }
+
+        .gov_name_lable {
+            display: inline-block;
+            background: #fff;
+            box-shadow: 0 2px 8px 0 rgba(125, 125, 125, .2);
+            border-radius: 100px;
+            padding: 0 14px;
+            font-size: 12px;
+            line-height: 30px;
+            height: 30px;
+            margin-top: 10px
+        }
+
+        .gov_name_con {
+            display: inline-block;
+            max-width: 144px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis
+        }
+
+        .gov_name_hot {
+            font-size: 12px;
+            color: #4c4c4c;
+            vertical-align: top
+        }
+
+        .news_li {
+            position: relative;
+            padding: 13px 13px 13px 13px;
+            width: auto;
+            height: 160px;
+            max-height: 160px;
+            border-right: 1px solid #f0f0f0;
+            border-bottom: 1px solid #f0f0f0;
+            color: #666
+        }
+
+        .news_li:hover {
+            border-right: 1px solid #d2d2d2;
+            border-bottom: 1px solid #d2d2d2;
+            background-color: #f7f8fd;
+            z-index: 10
+        }
+
+        .news_li .news_tu {
+            float: left;
+            margin-right: 26px;
+            width: 260px;
+            height: 160px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .news_li .news_tu img {
+            width: 260px;
+            height: 160px;
+            display: block
+        }
+
+        .news_li h2 {
+            margin-top: 0;
+            line-height: 19px;
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .news_li p {
+            line-height: 20px;
+            font-size: 14px;
+            margin-top: 16px;
+            width: 99%
+        }
+
+        .news_li .pdtt_trbs {
+            bottom: 20px;
+            width: 485px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 12px;
+            position: absolute;
+            right: 315px;
+            z-index: 999
+        }
+
+        .pdtt_trbs a {
+            min-width: 40px;
+            height: 24px;
+            display: inline-block;
+            padding-right: 8px;
+            color: #a0a0a0;
+            background: url(../img/toum.png) no-repeat right center
+        }
+
+        .pdtt_trbs span {
+            margin-left: 4px;
+            height: 24px;
+            color: #a0a0a0
+        }
+
+        .news_li:hover .news_tu img {
+            transform: scale(1.1);
+            -webkit-transition: all 1s
+        }
+
+        .footer {
+            width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            margin-top: 5px
+        }
+
+        .foot {
+            width: 100%;
+            border-top: 8px solid #00558f;
+            padding-top: 15px;
+            border-bottom: 1px solid #bdbdbd;
+            padding-bottom: 10px
+        }
+
+        .foot li {
+            float: left;
+            margin-top: 0;
+            font-size: 14px;
+            font-family: "微软雅黑", "宋体";
+            padding-left: 15px;
+            line-height: 25px
+        }
+
+        .footer span {
+            display: block;
+            width: 1100px;
+            line-height: 50px;
+            font-size: 14px;
+            text-align: center;
+            padding: 10px 0
+        }
+
+        .newsbox .lie_li {
+            width: 300px;
+            padding: 26px 33px 56px 33px;
+            border: 1px solid #f0f0f0;
+            color: #666;
+            position: relative;
+            border-top: none;
+            float: left;
+            border-left: none
+        }
+
+        .newsbox .lie_li:hover {
+            border-right: 2px solid #d2d2d2;
+            background-color: #f7f8fd;
+            z-index: 10
+        }
+
+        .newsbox .lie_li:hover .lie_tu img {
+            transform: scale(1.1);
+            -webkit-transition: all 1s
+        }
+
+        .lie_li .lie_tu {
+            width: 300px;
+            height: 160px;
+            overflow: hidden;
+            position: relative
+        }
+
+        .lie_li .lie_tu img {
+            width: 100%;
+            height: 160px;
+            display: block;
+            transition: all 1s;
+            -webkit-transition: all 1s
+        }
+
+        .newsbox .lie_li h2 {
+            line-height: 26px;
+            font-size: 18px;
+            font-weight: 700;
+            margin-top: 10px;
+            color: #333
+        }
+
+        .newsbox .lie_li p {
+            line-height: 20px;
+            font-size: 14px;
+            margin-top: 16px
+        }
+
+        .newsbox .laizi {
+            position: absolute;
+            bottom: 10px
+        }
+
+        .newsbox .laizi span {
+            font-size: 12px;
+            min-width: 40px;
+            height: 24px;
+            display: inline-block;
+            color: #a0a0a0
+        }
+
+        .artic {
+            border: 1px #ddd solid;
+            padding: 10px 66px 38px 66px;
+            text-align: center
+        }
+
+        .artic h1 {
+            line-height: 56px;
+            font-family: "微软雅黑", "宋体";
+            font-size: 38px;
+            text-align: center;
+            padding: 26px 0 26px 0;
+            font-weight: 400
+        }
+
+        .padd {
+            padding: 40px 36px 60px 36px
+        }
+
+        .artic span {
+            font-size: 14px;
+            color: #555
+        }
+
+        .pages_content {
+            line-height: 30px;
+            margin: 0;
+            padding: 0 0 40px 0;
+            font-size: 16px;
+            border-top: 1px #dcdcdc solid
+        }
+
+        .pages_content p {
+            margin-top: 15px;
+            text-align: left
+        }
+
+        .tab_left {
+            float: left;
+            width: 770px;
+            border-right: 1px #bababa solid
+        }
+
+        .tab_right {
+            float: right;
+            width: 270px;
+            padding-right: 30px
+        }
+
+        .fis_left {
+            width: 100%;
+            margin: 0 auto
+        }
+
+        .news_li .pdtt_sec {
+            bottom: 20px;
+            height: 24px;
+            line-height: 24px;
+            font-size: 12px;
+            position: absolute;
+            left: 300px;
+            z-index: 999
+        }
+
+        .pdtt_sec a {
+            min-width: 40px;
+            height: 24px;
+            display: inline-block;
+            padding-right: 8px;
+            color: #a0a0a0
+        }
+
+        .pdtt_sec span {
+            margin-left: 4px;
+            height: 24px;
+            color: #a0a0a0
+        }
+
+        .inf_kuang {
+            padding-top: 35px
+        }
+
+        .lmtit {
+            font-family: "宋体";
+            font-size: 22px;
+            border-bottom: 1px solid #bababa;
+            padding-top: 6px;
+            font-weight: 700
+        }
+
+        .docSearch1 {
+            margin-top: 15px
+        }
+
+        .docSearch1 form ul li {
+            line-height: 26px;
+            clear: both
+        }
+
+        .docSearch1 form ul li span.left {
+            display: inline-block;
+            float: left;
+            margin: 4px 0;
+            width: 56px;
+            font-size: 14px;
+            padding-right: 10px
+        }
+
+        .docSearch1 form ul li span.right {
+            display: block;
+            float: right;
+            width: 186px;
+            margin: 0;
+            padding: 0
+        }
+
+        .docSearch1 form ul li input {
+            border: none;
+            color: #666;
+            background: #eaeaea;
+            width: 156px;
+            line-height: 26px;
+            height: 26px;
+            margin: 4px 0;
+            padding: 0 15px
+        }
+
+        .docSearch1 form ul li span.right .inp {
+            z-index: 1;
+            background: url(../img/icon18.jpg) no-repeat right #eaeaea
+        }
+
+        .hezi1 {
+            height: 28px;
+            line-height: 28px;
+            font-size: 14px;
+            font-weight: 700;
+            padding-bottom: 10px
+        }
+
+        .inner {
+            padding-top: 20px
+        }
+
+        .docSearch2 .seclect_op {
+            position: relative;
+            z-index: 22;
+            zoom: 1
+        }
+
+        .inner form input {
+            border: none;
+            color: #666;
+            background: #eaeaea;
+            width: 240px;
+            line-height: 26px;
+            height: 26px;
+            margin: 0 0 8px 0;
+            padding: 0 15px
+        }
+
+        .inner form .seclect_op .inp {
+            z-index: 1;
+            background: url(../img/icon18.jpg) no-repeat right #eaeaea
+        }
+
+        .inner .tijiao {
+            width: 270px;
+            height: 30px;
+            background-color: #025193;
+            color: #fff;
+            border-radius: 6px;
+            margin-top: 5px
+        }
+
+        .inner .tijiao:hover {
+            background-color: #4e85b3
+        }
+
+        .artic .pages_content .pages_title {
+            border-bottom: 1px solid #dcdcdc;
+            padding-bottom: 25px;
+            padding-top: 30px
+        }
+
+        .artic .pages_content .pages_title h2 {
+            font-size: 30px;
+            color: #666;
+            text-align: left;
+            padding: 0;
+            font-family: "宋体";
+            font-weight: 700
+        }
+
+        .pages_title span {
+            color: #000;
+            font-weight: 700;
+            font-size: 20px;
+            padding-top: 5px;
+            display: inline-block
+        }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="padd">
+            <div class="artic">
+                <h1>语音网站无障碍声明及操作说明</h1>
+                <div class="pages_content">
+                    <div class="pages_title">
+                        <h2>第一部分：网站无障碍服务声明</h2>
+                        <p style="text-indent:2em;font-family:宋体;font-size:14pt">
+                            本网站坚持以人为本，倡导信息公平、权利平等，注重服务智能高效、受益人群广泛，在满足残障人士获取信息的同时，健全人也能从中受益。网站无障碍服务覆盖计算机网站及客户端和移动网站及APP等传输渠道，达到中国政务信息无障碍服务体系要求。
+                        </p>
+                        <p style="text-indent:2em;font-family:宋体;font-size:14pt">
+                            本网站严格遵循W3C《WCAG2.0》国际标准和《网站设计无障碍技术要求》及《Web信息无障碍交流通用设计规范》国内标准进行设计，充分满足信息无障碍重点服务人群盲人用户的需求，并通过提供全程键盘和人机语音互动等替代操作方式，网页文本信息影音化和特大文字网页等推送方式，为行动障碍的残疾人，低弱视力的视障人士，文化认知有障碍人士，以及阅读能力下降的老年人提供更加便捷高效、更加智能友好的服务。
+                        </p>
+                        <p style="text-indent:2em;font-family:宋体;font-size:14pt">
+                            计算机网站及客户端页面的所有内容可被键盘全程操作，移动网站及APP支持智能手势和人机语音互动替代操作。所有网页提供智能盲道和操作提示服务，所有图片和按钮控件均标示文字说明。为网页及文字提供色彩变化、大小设置、语音阅读服务。提供信息自定义和信息扁平化大字幕影音服务。
+                        </p>
+                    </div>
+                    <div class="pages_title">
+                        <h2>第二部分：语音网站快捷键使用说明</h2>
+                        <p style="font-family:宋体;font-size:14pt">1) 无障碍功能：Ctrl + ~ 键，开启/关闭无障碍唤醒模式。<br>2)
+                            读屏专用：Ctrl+Alt+R键,开启/关闭读屏专用功能。<br>3) 声音开启：Ctrl+Alt+V键,开启/关闭声音读屏功能。<br>4)
+                            语速：Ctrl+Alt+K键，开启/关闭调节语速快或者慢功能。<br>5) 阅读方式：Ctrl+Alt+F键，开启/关闭指读或者连读模式。<br>6)
+                            变换颜色：Ctrl+Alt+T键，开启/关闭背景颜色模式。<br>7) 网页放大：Ctrl+Alt+加号，开启/关闭网页文字放大功能。<br>8)
+                            网页缩小：Ctrl+Alt+减号，开启/关闭网页文字缩小功能。<br>9) 大鼠标开启：Ctrl+Alt+M键，开启/关闭大鼠标模式。<br>10)
+                            十字线开启：Ctrl+Alt+N键，开启/关闭十字线模式。<br>11) 开启大字幕：Ctrl+Alt+B键，开启/关闭底部大字幕功能。<br>12)
+                            重置功能：Ctrl+Alt+C键，开启/关闭重新设置功能。<br>13) 固定：Ctrl+Alt+L键，固定或取消固定工具栏。<br>14)
+                            说明：Ctrl+Alt+问号键，打开帮助说明页面。<br>15) 退出服务：Ctrl+Alt+E键，退出服务还原当前网页原始状态。<br>16) 切换智能盲道：
+                            Alt+(1、2、3、4、5、6)键。<br>17) 浏览页面所有图片：Alt+9。<br>18) 居中放大浏览页面中的二维码：Alt+0。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>var AriaQueryString = { val: function (e, t) { return t = t || location.search.substring(1), new RegExp("(^|/?|&)" + e + "=([^&]*)(/s|&|$)", "i").test(t) ? RegExp.$2 : "" } }; function getAppId(t) { var e = AriaQueryString.val("appid"); if (e && 5 < e.length) t(e); else { var a = new XMLHttpRequest; a.open("get", serviceUrl + "/api/services/Accessibility/Configuration/GetEnAppId"), a.send(), a.onreadystatechange = function () { if (4 == a.readyState && 200 == a.status) { var e = a.responseText; "object" != typeof e && (e = JSON.parse(e)), t && "function" == typeof t && t(e.result) } } } } function loadJS(e) { var t = document.createElement("script"); t.type = "text/javascript", t.readyState ? t.onreadystatechange = function () { "loaded" != t.readyState && "complete" != t.readyState || (t.onreadystatechange = null, aria.start()) } : t.onload = function () { aria.start() }, t.setAttribute("charset", "utf-8"), t.src = "../?appid=" + e, document.body.appendChild(t) } var serviceUrl = document.location.href.split("dist/")[0]; getAppId(loadJS)</script>
+</body>
+
+</html>
