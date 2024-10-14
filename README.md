@@ -12,7 +12,7 @@
 
 ## 演示地址
 
-https://muzihuaner.github.io/assist/example/index.html
+https://yimocha.github.io/
 
 ## 调用方式
 
